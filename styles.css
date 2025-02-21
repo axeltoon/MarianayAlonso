@@ -1,0 +1,2892 @@
+/* styles.css */
+@font-face {
+    font-family: 'Astralaga';
+    src: url('fonts/Astralaga-Medium.woff') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Autography';
+    src: url('fonts/AUTOGRAPHY.woff') format('truetype');
+    font-weight:900;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'Avenir';
+    src: url('fonts/Avenir-LT-Std-55-Roman.woff') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: #000000;
+    color: white;
+}
+
+/* ---------------------- */
+/* Contenido Nav */
+/* ---------------------- */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #31332A;
+  padding: 15px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.navbar.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.nav-list li {
+  margin: 0 15px;
+  font-family: 'Avenir';
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
+}
+
+.nav-list a:hover {
+  color: #000000;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.logo {
+  font-family: 'Astralaga', cursive;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 20px;
+  white-space: nowrap;
+}
+
+/* ---------------------- */
+/* Menú Hamburguesa */
+/* ---------------------- */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1500;
+  padding: 10px;
+  background: transparent;
+  border: none;
+}
+
+.bar {
+  background-color: #ffffff;
+  height: 2px;
+  width: 25px;
+  margin: 3px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animación del menú hamburguesa */
+.menu-toggle.active .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (max-width: 1090px) {
+  .menu-toggle {
+      display: flex;
+  }
+
+  .nav-list {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      height: 100vh;
+      background: #3e4137cb;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: left 0.4s ease-in-out;
+  }
+
+  .nav-list.active {
+      left: 0;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-list li {
+      margin: 15px 0;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .nav-list.active li {
+      opacity: 1;
+      transform: translateX(0);
+  }
+
+  .nav-list a {
+      font-size: 20px;
+      color: #ffffff;
+      padding: 12px 25px;
+  }
+
+  .nav-list a:hover {
+      color: #1E2915;
+  }
+
+  .logo {
+      font-size: 24px;
+      margin: 0 auto;
+  }
+}
+
+/* Agregar delays a los items del menú para una animación escalonada */
+.nav-list.active li:nth-child(1) { transition-delay: 0.1s; }
+.nav-list.active li:nth-child(2) { transition-delay: 0.2s; }
+.nav-list.active li:nth-child(3) { transition-delay: 0.3s; }
+.nav-list.active li:nth-child(4) { transition-delay: 0.4s; }
+.nav-list.active li:nth-child(5) { transition-delay: 0.5s; }
+
+
+ /* ---------------------- */
+  /* Parallax */
+  /* ---------------------- */
+
+
+.parallax {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.parallax .layer1 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: url('imagenes/EDIT\ 2.webp');
+    background-size: cover;
+    background-position: left center;
+    background-attachment: scroll;
+    z-index: -1;
+}
+.parallax .layer2 {
+  position: absolute;
+  width: 650px;
+  height: auto;
+  top: 40%;
+  left: 76%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.parallax .layer2.loaded {
+  opacity: 1; /* Hace que aparezca suavemente */
+}
+.content {
+    position: relative;
+    text-align: center;
+    z-index: 10;
+}
+
+.content h1 {
+    font-size: 6em;
+    font-family: 'Astralaga', sans-serif;
+    margin-top: 30rem;
+}
+.spacer {
+    height: 100vh;
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .parallax .layer1 {
+      background-attachment: fixed; /* Solo aplicamos el efecto en pantallas pequeñas */
+  }
+
+  .parallax .layer2 {
+      width: 500px;
+      height: auto;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+  }
+
+  .content h1 {
+      font-size: 4em;
+      margin-top: 30rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .parallax .layer2 {
+      width: 300px;
+      height: auto;
+      top: 50%;
+  }
+
+  .content h1 {
+      font-size: 3em;
+      margin-top: 20rem;
+  }
+}
+
+/* ---------------------- */
+/* Papel Cortado */
+/* ---------------------- */
+.paper-effect {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect img {
+  position: relative;
+  top: 100px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect img {
+    top: 20px;
+    width: 100%;
+  }
+}
+
+/* ---------------------- */
+/* Estilos para la sección del calendario */
+/* ---------------------- */
+.date-section {
+  min-height: 100vh;
+  display: flex;
+  padding: 5rem;
+  background-image: url('imagenes/fondoCal.webp');
+  background-size:auto;
+  background-position: center;
+  background-attachment: scroll;
+  gap: 1em;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden; /* Previene desbordamientos inesperados */
+}
+
+/* Contenedor para el calendario - Optimizado */
+.calendar-container {
+  position: relative;
+  background: #1E2915;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 2rem;
+  width: 400px;
+  flex-shrink: 0;
+  z-index: 1;
+  margin-bottom: 100px;
+  margin-left: 100px;
+  cursor: pointer;
+  /* Mejora en la transición */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, box-shadow; /* Optimiza las animaciones */
+}
+
+.calendar-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+/* Optimización del header del calendario */
+.calendar-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 0.5rem; /* Espacio para el texto hover */
+}
+
+.calendar-header h2 {
+  font-family: 'Astralaga', cursive;
+  color: #ffffff;
+  font-size: 2rem;
+  margin: 0; /* Elimina márgenes innecesarios */
+  line-height: 1.2; /* Mejor espaciado */
+}
+
+/* Optimización del texto de guardar */
+.save-calendar-text {
+  font-family: 'Avenir', sans-serif;
+  color: #ffffff;
+  font-size: 0.9rem;
+  opacity: 0;
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  pointer-events: none; /* Evita problemas de hover */
+}
+
+.calendar-container:hover .save-calendar-text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(2px);
+}
+
+/* Optimización de la cuadrícula del calendario */
+.calendar {
+  width: 100%;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-family: 'Avenir', sans-serif;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  gap: 5px;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Optimización de las celdas de días */
+.days div {
+  padding: 10px;
+  text-align: center;
+  font-family: 'Avenir', sans-serif;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+/* Mejora en el highlight del día seleccionado */
+.days div.highlight {
+  position: relative;
+  background-color: transparent;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.days div.highlight::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #85a78a;
+  border-radius: 50%;
+  animation: drawCircle 1.5s ease-out infinite;
+  will-change: transform; /* Optimiza la animación */
+}
+
+/* Optimización de la animación del círculo */
+@keyframes drawCircle {
+  0% {
+    stroke-dasharray: 0 100;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    stroke-dasharray: 100 100;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Optimización del contenedor de texto */
+.date-text-container {
+  max-width: 500px;
+  padding: 7rem;
+  position: relative;
+}
+
+.date-section p {
+  font-family: 'Autography', sans-serif;
+  font-size: 4rem;
+  line-height: 1;
+  color: #000000;
+  text-align: left;
+  margin-top: -100px;
+  margin-left: -60px;
+}
+
+.text-container p {
+  font-family: 'Avenir', sans-serif;
+  font-size: 2rem;
+  color: #000000;
+  text-align: center;
+  max-width: 1290px;
+  margin: 0 auto; /* Centrado mejorado */
+}
+
+/* Optimización de la flecha */
+.arrow-container {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  pointer-events: none;
+  z-index: 2;
+  top: 45%;
+  left: 54%;
+  transform: translateX(0%) rotate(180deg);
+  transform-origin: left center;
+  will-change: transform; /* Optimiza la animación */
+}
+
+.curved-arrow {
+  stroke: #384C25;
+  stroke-width: 4;
+  fill: none;
+  opacity: 1;
+  stroke-dasharray: 5, 5;
+  stroke-dashoffset: 500;
+  animation: drawArrow 2s ease forwards;
+}
+
+@keyframes drawCircle {
+  0% {
+    stroke-dasharray: 0 100;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    stroke-dasharray: 100 100;
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.calendar-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 90%;
+  width: 400px;
+  color: #000000;
+}
+
+.calendar-button {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Avenir', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.google-calendar {
+  background-color: #4285f4;
+  color: white;
+}
+
+.apple-calendar {
+  background-color: #000000;
+  color: white;
+}
+
+.close-modal {
+  background-color: #cccccc;
+  color: #333333;
+}
+
+.calendar-button:hover {
+  opacity: 0.9;
+}
+
+
+.modal-content p {
+  font-family: 'Avenir', sans-serif;
+  font-size: 1.2rem;
+  color: #000000;
+  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+
+/* Animación de la flecha */
+@keyframes drawArrow {
+  from {
+      stroke-dashoffset: 500;
+      transform: scale(1);
+  }
+  to {
+      stroke-dashoffset: 0;
+      transform: scale(0.8); /* Hace más pequeña la flecha */
+  }
+}
+
+.curved-arrow {
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  animation: drawArrow 2s ease forwards;
+}
+
+/* Media Queries Optimizados */
+@media (max-width: 1175px) {
+  .date-section {
+    padding: 2rem 1rem;
+    gap: 0rem;
+  }
+
+  .calendar-container {
+    margin: 0 auto;
+    width: 90%;
+    max-width: 400px;
+    padding: 1.5rem;
+  }
+  
+  .date-section p {
+    font-size: 3.5rem;
+    text-align: left;
+    margin-top: -10px;
+    margin-left: -50px;
+  }
+
+  .text-container p {
+    font-size: 1.8rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .arrow-container {
+    display: none; /* Ocultar la flecha en tablets */
+  }
+}
+
+/* Tablets pequeñas y móviles grandes */
+@media (max-width: 930px) {
+  .date-section {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .calendar-container {
+    padding: 1%;
+    margin-bottom: 1rem;
+    margin-top: 50px;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .weekdays {
+    font-size: 0.9rem;
+  }
+
+  .days div {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  .days div.highlight::after {
+    width: 35px;
+    height: 35px;
+  }
+
+  .date-text-container {
+    max-width: 500px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .date-section p {
+    font-size: 3rem;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .text-container p {
+    font-size: 1.5rem;
+  }
+
+  .modal-content {
+    width: 85%;
+    padding: 1.5rem;
+  }
+
+  .calendar-button {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Móviles pequeños */
+@media (max-width: 480px) {
+  .date-section {
+    padding: 1rem 0rem;
+  }
+
+  .calendar-container {
+    width: 95%;
+    padding: 1rem 0.8rem;
+  }
+
+  .calendar-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .weekdays {
+    font-size: 0.8rem;
+  }
+
+  .days div {
+    padding: 6px;
+    font-size: 0.8rem;
+  }
+
+  .days div.highlight::after {
+    width: 30px;
+    height: 30px;
+  }
+
+  .date-section p {
+    font-size: 3rem;
+  }
+
+  .text-container p {
+    font-size: 1.5rem;
+  }
+
+  .save-calendar-text {
+    font-size: 0.8rem;
+    bottom: -1.2rem;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 1.2rem;
+  }
+
+  .modal-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .calendar-button {
+    padding: 0.7rem;
+    font-size: 0.85rem;
+    margin: 0.3rem 0;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 320px) {
+  .calendar-container {
+    padding: 0.8rem 0.5rem;
+  }
+
+  .days div {
+    padding: 4px;
+    font-size: 0.75rem;
+  }
+
+  .days div.highlight::after {
+    width: 25px;
+    height: 25px;
+  }
+
+  .weekdays {
+    font-size: 0.7rem;
+  }
+}
+
+/* ---------------------- */
+/* Papel Crono v1 */
+/* ---------------------- */
+.paper-effect-cronov1 {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-cronov1 img {
+  position: absolute;
+  top: -140px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-cronov1 img {
+    top: -90px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-cronov1 img {
+    top: -50px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-cronov1 img {
+    top: -40px;
+    width: 100%;
+  }
+}
+
+
+/* ---------------------- */
+/* cronograma */
+/* ---------------------- */
+.timeline-section {
+  text-align: center;
+  background-image: url('imagenes/fondoCron.webp');
+  background-size:contain;
+  background-position: center;
+  background-attachment: scroll;
+  padding: 150px 20px;
+  position: relative;
+  z-index: 0;
+}
+.timeline-title {
+  font-family: "Astralaga", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: #F5E6C5;
+}
+.timeline-subtitle {
+  font-family: "Avenir", sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: #937851;
+}
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 80%;
+  margin: auto;
+}
+.timeline-line {
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background:#937851;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.timeline-circle {
+  width: 15px;
+  height: 15px;
+  background: #937851;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.start { top: 0; }
+.end { bottom: 0; }
+.timeline-event {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+}
+.timeline-event.left { 
+  justify-content:center; 
+  left: -20%;
+  padding: 8rem;
+}
+.timeline-event.right { 
+  justify-content: center; 
+  left: 20%;
+  max-width: 65%; /* Evita que los contenedores se expandan demasiado */
+  text-align: left;
+}
+.time-right {
+  font-weight: bold;
+  padding: 10px;
+  margin-left: 50px;
+  margin-top: 20px;
+  color: #F5E6C5;
+  font-size: 2.5rem;
+}
+.time-left {
+  font-weight: bold;
+  padding: 10px;
+  color: #F5E6C5;
+  margin-top: 20px;
+  margin-left: -70px;
+  font-size: 2.5rem;
+}
+.event-content {
+  line-height: 2;
+  text-align: center;
+  padding: 10px;
+  margin-left: 40px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.event-content h3 {
+  font-family: "Avenir";
+  font-size: 2.5rem;
+  color: #F5E6C5;
+}
+
+.event-content p{
+  font-family: "Avenir", sans-serif;
+  font-size: 1.5rem;
+  color:#F5E6C5;
+}
+.icon-left {
+  position: absolute;
+  left: 90%;
+  transform: translateX(-50%);
+}
+.icon-right {
+  position: absolute;
+  left: -15%;
+  transform: translateX(-50%);
+}
+.icon-left img, .icon-right img {
+  width: 200px;
+  height: auto;
+}
+.dotted-line {
+  width: 20rem;
+  height: 2px;
+  border-top: 5px dashed #937851;
+  position: absolute;
+  top: 18%;
+  left: 35.6%;
+  transform: translateX(-50%) translateY(-50%); /* Alinea la línea correctamente */
+}
+.dotted-line1 {
+  width: 20rem;
+  height: 2px;
+  border-top: 5px dashed #937851;
+  position: absolute;
+  top: 43%;
+  left: 65%;
+  transform: translateX(-50%) translateY(-50%); /* Alinea la línea correctamente */
+}
+.dotted-line2 {
+  width: 20rem;
+  height: 2px;
+  border-top: 5px dashed #937851;
+  position: absolute;
+  top: 68%;
+  left: 35.6%;
+  transform: translateX(-50%) translateY(-50%); /* Alinea la línea correctamente */
+}
+.dotted-line3 {
+  width: 20rem;
+  height: 2px;
+  border-top: 5px dashed #937851;
+  position: absolute;
+  top: 93%;
+  left: 65%;
+  transform: translateX(-50%) translateY(-50%); /* Alinea la línea correctamente */
+}
+
+/* Estilos existentes se mantienen igual hasta el breakpoint */
+
+/* Media queries para cronograma */
+@media (max-width: 1380px) {
+  .timeline {
+    width: 90%;
+  }
+  
+  .icon-left img, .icon-right img {
+    width: 150px;
+  }
+
+  .icon-right {
+    position: absolute;
+    left: -20%;
+  }
+  
+  .time-right, .time-left {
+    font-size: 2rem;
+  }
+
+ 
+  .event-content h3 {
+    font-size: 2rem;
+  }
+  
+  .event-content p {
+    font-size: 1.2rem;
+  }
+  
+  .dotted-line, .dotted-line1, .dotted-line2, .dotted-line3 {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .timeline {
+    width: 90%;
+  }
+  
+  .icon-left img, .icon-right img {
+    width: 150px;
+  }
+
+  .icon-right {
+    left: -10%;
+  }
+  
+  .time-right, .time-left {
+    font-size: 2rem;
+  }
+
+  .timeline-event.left {  
+    left: -25%;   
+  }
+  
+  .timeline-event.right { 
+    max-width: 65%; /* Evita que los contenedores se expandan demasiado */
+  left: 22%;
+  }
+  
+  .time-right {
+    margin-left: 5px;
+    
+  }
+  .time-left {
+    margin-left: 5px;
+  }
+  
+
+  .event-content h3 {
+    font-size: 2rem;
+  }
+  
+  .event-content p {
+    font-size: 1.2rem;
+  }
+  
+  .dotted-line, .dotted-line1, .dotted-line2, .dotted-line3 {
+    width: 12rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 100px 10px;
+  }
+  
+  .timeline-title {
+    font-size: 35px;
+  }
+  
+  .timeline {
+    width: 100%;
+  }
+  
+  /* Mantener la línea central */
+  .timeline-line {
+    left: 50%;
+  }
+  
+  .timeline-circle {
+    left: 50%;
+  }
+  
+  /* Ajustar eventos manteniendo la distribución alternada */
+  .timeline-event.left, 
+  .timeline-event.right {
+    padding: 1.5rem;
+    max-width: 70%;
+  }
+
+  .timeline-event.left {
+    left: -15%;
+  }
+  
+  .timeline-event.right {
+    left: 16%;
+  }
+  
+  .event-content {
+    margin-left: 0px;
+    text-align: center;
+  }
+  
+  /* Reposicionar tiempos debajo de los íconos */
+  .time-right, .time-left {
+    font-size: 1.5rem;
+    margin: 0;
+    position: absolute;
+    text-align: center;
+    width: auto;
+  }
+
+  .time-left {
+    left: 80%;
+    top: 75%;
+    max-width: 100%;
+  }
+
+  .time-right {
+    left: -9%;
+    top: 75%;
+  }
+  
+  /* Ajustar posición de íconos */
+  .icon-left {
+    left: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icon-right {
+    left: 3%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .icon-left img, .icon-right img {
+    width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  /* Ajustar líneas punteadas */
+  .dotted-line {
+    width: 8rem;
+    top: 12.5%;
+    left: 35%;
+  }
+  
+  .dotted-line1 {
+    width: 8rem;
+    top: 37.3%;
+    left: 65%;
+  }
+  
+  .dotted-line2 {
+    width: 8rem;
+    top: 62%;
+    left: 35%;
+  }
+  
+  .dotted-line3 {
+    width: 8rem;
+    top: 87.2%;
+    left: 65%;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-title {
+    font-size: 28px;
+  }
+  
+  .timeline-subtitle {
+    font-size: 16px;
+  }
+  
+  .timeline-event.left {
+    left: -15%;
+  }
+  
+  .timeline-event.right {
+    left: 15%;
+  }
+  
+  .event-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .event-content p {
+    font-size: 0.9rem;
+  }
+  
+  .time-right, .time-left {
+    font-size: 1.2rem;
+  }
+
+  .time-left {
+    left: 80%;
+  }
+
+  .time-right {
+    left: -10%;
+  }
+  
+  .icon-left {
+    left: 90%;
+  }
+  
+  .icon-right {
+    left: 8%;
+  }
+  
+  .icon-left img, .icon-right img {
+    width: 70px;
+  }
+  
+  .dotted-line, .dotted-line1, .dotted-line2, .dotted-line3 {
+    width: 7rem;
+  }
+}
+
+/* ---------------------- */
+/* Papel Crono v2 */
+/* ---------------------- */
+.paper-effect-cronov2 {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-cronov2 img {
+  position: absolute;
+  top: -20px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-cronov2 img {
+    top: -10px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-cronov2 img {
+    top: -30px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-cronov2 img {
+    top: -20px;
+    width: 100%;
+  }
+}
+
+
+
+/* ---------------------- */
+/* Estilos para la sección del contador */
+/* ---------------------- */
+.countdown-background {
+  position: absolute;
+  top: -10rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('imagenes/EDIT\ 3.webp');
+  background-size: 150%;
+  background-position: 20% 46%;
+  background-repeat: no-repeat; /* Evita el mosaico de la imagen */
+  z-index: 0;
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+
+.countdown-section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: left;
+  align-items: end;
+  position: relative;
+  padding: 2rem;
+  overflow: hidden; /* Añadido para contener el fondo */
+}
+
+.countdown-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.countdown-container {
+  position: relative;
+  text-align:start;
+  color: white;
+  padding: 2rem;
+  width: 100%;
+  z-index: 1; /* Asegura que esté por encima del fondo */
+}
+
+.countdown-container h2 {
+  font-family: 'Astralaga', cursive;
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.countdown {
+  display: flex;
+  justify-content: left;
+  gap: 10rem;
+  margin-bottom: 5rem;
+}
+
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-item span:first-child {
+  font-size: 4rem;
+  font-family: 'Astralaga', cursive;
+  line-height: 1;
+}
+
+.countdown-item .label {
+  font-family: 'Avenir', sans-serif;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------------------- */
+/* Ajustes responsivos */
+/* ---------------------- */
+@media (max-width: 1035px) {
+
+  .countdown-container h2 {
+      font-size: 2.5rem;
+      margin: 0 auto 1rem auto;
+      text-align: left;
+  }
+
+  .countdown {
+      flex-direction: row;
+      gap: 3rem;
+      margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .countdown-container h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin: 50px auto 1rem auto;
+  }
+  .countdown-background{
+    background-size: 250%;
+    background-position: 35% 50%;
+  }
+
+  .countdown {
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      margin-left: 0;
+  }
+
+  .countdown-item span:first-child {
+      font-size: 2.5rem;
+  }
+
+  .countdown-item .label {
+      font-size: 0.8rem;
+  }
+}
+
+
+/* ---------------------- */
+/* Código de Vestimenta */
+/* ---------------------- */
+/* Ajustes en la Sección Código de Vestimenta */
+.dress-code-section {
+  background: url('imagenes/fondoCron.webp') center/cover no-repeat;
+  text-align: center;
+  margin: 0px auto;
+  padding: 20px;
+}
+
+.dress-code-section h2 {
+  font-size: 4rem;
+  margin-top: 100px;
+  color: #F5E6C5;
+  font-family: 'Astralaga', cursive;
+  padding: 50px;
+}
+
+
+
+/* Contenedor principal */
+.dress-code-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+/* Estilo de cada categoría (Mujeres y Hombres) */
+.dress-code-item {
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dress-code-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* Caja de texto centrado */
+.text-center-box {
+  max-width: 800px;
+  margin: 50px auto 20px auto;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.text-center-box h3 {
+  font-family: 'Autography', cursive;
+  font-size: 64px;
+  color: #937851;
+  margin: 0 auto;
+  margin-left: 50px;
+  margin-top: 50px;
+  text-align: center;
+  z-index: 1;
+  max-width: 100%;
+}
+.text-center-box h4 {
+  font-size: 1.2rem;
+  color: #ffffff;
+  font-family: 'Avenir', sans-serif;
+  margin-bottom: 10px;
+}
+
+.text-center-box p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  font-family: 'Avenir', sans-serif;
+  max-width: 500px;
+  text-align: center;
+  margin: 0px auto 20px auto;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .dress-code-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .dress-code-section h2 {
+    font-size: 3.2rem;
+    margin-top: 100px;
+  }
+
+ .text-center-box h3 {
+  font-size: 44px;
+  margin-left: 0px;
+  margin-top: 50px;
+  max-width: 100%;
+}
+
+  .text-center-box h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  .text-center-box p {
+    font-size: 1rem;
+  }
+
+  .text-center-box {
+    max-width: 90%;
+  }
+
+}
+
+/* Responsividad */
+@media (max-width: 480px) {
+
+  .dress-code-section h2 {
+    font-size: 3rem;
+    margin-top: 100px;
+  }
+
+
+  
+  .text-center-box h4 {
+    font-size: .9rem;
+    margin-bottom: 10px;
+    
+  }
+  .text-center-box p {
+    font-size: .8rem;
+  }
+
+  .text-center-box {
+    max-width: 100%;
+  }
+
+  .dress-code-item {
+    width: 130px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+  }
+}
+
+/* ---------------------- */
+/* Papel Crono v2 */
+/* ---------------------- */
+.paper-effect-vest {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-vest img {
+  position: absolute;
+  top: -20px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-vest img {
+    top: -10px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-vest img {
+    top: -30px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-vest img {
+    top: -20px;
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+/* ---------------------- */
+/* Sección de Ubicación */
+/* ---------------------- */
+.location-section {
+  padding: 200px 20px;
+  background: url('imagenes/fondoLoca.webp') center/cover no-repeat;
+  text-align: center;
+  position: relative;
+}
+
+.location-title {
+  margin-bottom: 100px;
+}
+
+.location-title h2 {
+  font-family: 'Astralaga', serif; /* Fuente similar a la imagen */
+  font-size: 70px;
+  margin: 0;
+  color: #000;
+  text-transform: uppercase;
+  margin-top: 5%;
+}
+
+.location-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.location {
+  display: flex;
+  align-items: flex-start;
+  gap: 50px;
+  width: 100%;
+}
+
+/* Estilos específicos para ceremonia */
+.ceremonia {
+  margin-right: auto; /* Empuja hacia la izquierda */
+  width: 70%;
+}
+
+/* Estilos específicos para recepción */
+.recepcion {
+  margin-left: auto; /* Empuja hacia la derecha */
+  width: 55%;
+}
+
+.location-icon {
+  width: 200px;
+  height: auto;
+}
+
+.location-info {
+  text-align: left;
+}
+
+.location-info2 {
+  text-align: right;
+}
+
+.location-info h4, .location-info2 h4 {
+  font-family: 'Avenir', sans-serif;
+  font-size: 35px;
+  margin: 0 0 10px 0;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.venue-name,
+.venue-address,
+.venue-city {
+  font-family: 'Avenir', sans-serif;
+  font-size: 25px;
+  margin: 5px 0;
+  color: #000;
+}
+
+.location-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background-color: transparent;
+  border: 1px solid #000000;
+  color: #000000; /* Color vino como en la imagen */
+  text-decoration: none;
+  font-family: 'Avenir', sans-serif;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1140px) {
+  .recepcion {
+    margin-left: auto; /* Empuja hacia la derecha */
+    width: 65%;
+
+}
+}
+
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+  .location {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .ceremonia,
+  .recepcion {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .location-info, .location-info2 {
+    text-align: center;
+  }
+
+  .recepcion {
+    margin-left: auto; /* Empuja hacia la derecha */
+    width: 85%;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .location-title h2 {
+    font-size: 60px;
+  }
+}
+
+/* ---------------------- */
+/* Papel crono v2 fotos */
+/* ---------------------- */
+.paper-effect-fotos {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-fotos img {
+  position: absolute;
+  top: -150px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-fotos img {
+    top: -90px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-fotos img {
+    top: -55px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-fotos img {
+    top: -35px;
+    width: 100%;
+  }
+}
+
+/* ---------------------- */
+/* Momentos especiales */
+/* ---------------------- */
+
+/* Galería de Fotos */
+.photo-gallery {
+  text-align: center;
+  background-image: url('imagenes/fondoCron.webp');
+  background-size:contain;
+  background-position: center;
+  background-attachment: scroll;
+  margin: auto auto;
+  padding: 20px;
+}
+
+.photo-gallery h2 {
+  margin-bottom: 20px;
+  font-size: 4rem;
+  color: #F5E6C5;
+  font-family: 'Astralaga', cursive;
+  margin-top: 50px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Fila de fotos */
+.photo-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Tamaños de las fotos */
+/* Configuración inicial de los contenedores */
+.photo-container {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 4px solid #F5E6C5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateX(-50px);
+  background-color: #3d2f2f;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto; /* Asegura que respete su contenido */
+  height: auto;
+}
+
+/* Tamaño ajustado de las imágenes */
+.photo-container img {
+  max-width: 100%; /* Imagen no excede el tamaño del contenedor */
+  max-height: 100%; /* Imagen no excede la altura del contenedor */
+  object-fit: cover; /* Llenar el contenedor sin distorsión */
+  width: 100%; /* Ajustar a la anchura */
+  height: 100%; /* Ajustar a la altura */
+}
+
+/* Ajuste para contenedores grandes */
+.photo-container.large {
+  width: 90%; /* Más pequeño que el ancho completo */
+  aspect-ratio: 16 / 9; /* Proporción para fotos horizontales */
+}
+
+/* Ajuste para contenedores pequeños */
+.photo-container.small {
+  width: calc(45% - 10px); /* Más pequeño pero proporcional */
+  aspect-ratio: 3 / 4; /* Proporción para fotos verticales */
+}
+
+/* Mostrar las imágenes con animación */
+.photo-container.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contenedor de la galería */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 20px; /* Asegura espacio suficiente */
+}
+
+/* Animación al hacer scroll */
+.photo-container {
+  transition: opacity 0.8s ease, transform 0.8s ease, transform 0.5s ease-out;
+}
+
+.photo-container:not(.visible) {
+  transform: translateX(50px);
+  opacity: 0;
+}
+
+@media (max-width: 760px) {
+  .photo-gallery h2 {
+    font-size: 3rem;
+  }
+}
+/* ---------------------- */
+/* Papel Crono v2 */
+/* ---------------------- */
+.paper-effect-fotos2 {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-fotos2 img {
+  position: absolute;
+  top: -30px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-fotos2 img {
+    top: -10px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-fotos2 img {
+    top: -30px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-fotos2 img {
+    top: -20px;
+    width: 100%;
+  }
+}
+
+/* ---------------------- */
+/* Hospedaje */
+/* ---------------------- */
+.accommodation-section {
+  padding: 100px 20px;
+  text-align: center;
+  background-image: url('imagenes/FondoHospe.webp');
+  background-size:auto;
+  background-position: center;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.accommodation-section h2 {
+  font-family: 'Astralaga', serif;
+  font-size: 60px;
+  margin-top: 10%;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.accommodation-info {
+  font-family: "Avenir", sans-serif;
+  font-size: 20px;
+  margin-bottom: 40px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.accommodation-info em {
+  font-style: italic;
+}
+
+.hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hotel-card {
+  text-align: left;
+  padding: 100px;
+}
+
+.hotel-icon {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 15px;
+  margin-left: 80px;
+}
+
+.hotel-card h3 {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-style: italic;
+  color: #000;
+}
+
+.hotel-card p {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  margin: 5px 0;
+  line-height: 1.4;
+  color: #000;
+}
+
+.info-button {
+  display: inline-block;
+  margin-top: 15px;
+  margin-left: 190px;
+  padding: 8px 20px;
+  background-color: transparent;
+  color: #000;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border-bottom: 1px solid #937851;
+}
+
+@media (max-width: 988px) {
+  .hotel-card {
+    text-align: left;
+    padding: 20px;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hotels-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .accommodation-section h2 {
+    font-size: 40px;
+  }
+
+  .hotel-card {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .hotel-icon {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+  }
+  
+}
+
+/* ---------------------- */
+/* Papel crono v2 fotos */
+/* ---------------------- */
+.paper-effect-mesa1 {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-mesa1 img {
+  position: absolute;
+  top: -130px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-mesa1 img {
+    top: -90px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-mesa1 img {
+    top: -55px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-mesa1 img {
+    top: -35px;
+    width: 100%;
+  }
+}
+
+/* ---------------------- */
+/* Mesa de Regalos */
+/* ---------------------- */
+
+.gifts-section {
+  text-align: center;
+  background-image: url('imagenes/fondoCron.webp');
+  background-position: center;
+  background-attachment: scroll;
+  padding: 100px;
+}
+
+/* Estilo del título */
+.gifts-section h2 {
+  font-size: 4rem;
+  color: #F5E6C5; /* Dorado elegante */
+  font-family: 'Astralaga', cursive;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Párrafo de indicación */
+.gifts-section p {
+  font-size: 1.2rem;
+  color: #A08870;
+  margin-bottom: 20px;
+  max-width: 900px;
+  text-align: center;
+  margin: 50px auto 80px auto;
+}
+
+/* Contenedor de enlaces */
+.gift-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+
+/* Imágenes de los logos */
+.gift-link img {
+  width: 400px; /* Tamaño ajustable */
+  height: auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  filter: drop-shadow(2px 2px 5px rgba(255, 255, 255, 0.301));
+}
+
+
+/* Efecto hover */
+.gift-link img:hover {
+  transform: scale(1.1);
+  opacity: 0.1;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .gifts-section h2 {
+    font-size: 2rem;
+    padding: 0px;
+  }
+  
+  
+  .gifts-section p {
+    font-size: 1rem;
+   
+  }
+  .gift-links {
+    gap: 40px;
+  }
+
+  .gift-link img {
+    width: 300px; /* Tamaño ajustable */
+    height: auto;
+  }
+}
+
+@media (max-width: 520px){
+  .gifts-section p {
+    margin: 50px -50px 80px -50px;
+   
+  }
+}
+
+
+/* ---------------------- */
+/* Papel Crono v2 */
+/* ---------------------- */
+.paper-effect-mesa2 {
+  width: 100%;
+  position:relative;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  background: transparent !important;
+  display: flex;
+  justify-content: center; /* Centra la imagen */
+}
+
+
+.paper-effect-mesa2 img {
+  position: absolute;
+  top: -120px; /* Ajusta según necesidad */
+  width: 100vw; /* Se expande más allá de la pantalla sin causar overflow */
+  max-width: unset; /* Evita que el max-width limite el ajuste */
+  height: auto;
+  display: block;
+}
+
+/* ---------------------- */
+/* Ajustes Responsivos */
+/* ---------------------- */
+@media (max-width: 1260px) {
+  .paper-effect-mesa2 img {
+    top: -10px;
+    width: 100%;
+  }
+}
+@media (max-width: 760px) {
+  .paper-effect-mesa2 img {
+    top: -30px;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .paper-effect-mesa2 img {
+    top: -20px;
+    width: 100%;
+  }
+}
+
+
+/* ---------------------- */
+/* confirmacion */
+/* ---------------------- */
+.confirmacion-section {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120vh;
+  background-image: url('imagenes/fondoCal.webp');
+  background-size:auto;
+  background-position: center;
+  background-attachment: scroll;
+}
+
+/* Fondo negro con imagen */
+.fondo-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+/* Contenedor principal */
+.container {
+  position: relative;
+  width: 400px;
+  max-width: 90%;
+}
+
+/* Cuadro principal más alargado */
+.codigo-box {
+  position: relative;
+  width: 420px;
+  height: 600px;
+  background: white;
+  left: -160px;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+
+.codigo-box.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.codigo-box.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.codigo-box h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 3em;
+  margin-top: 4em;
+}
+
+/* Input de código */
+.input-codigo {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 1em;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  color: #333;
+  margin-top: 1em;
+}
+
+/* Botón de verificación */
+.btn-verificar {
+  margin-top: 30px;
+  width: 100%;
+  padding: 1em;
+  border: 2px solid #31332A;
+  border-radius: 10px;
+  background:#31332A;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.btn-verificar:hover {
+  background: white;
+  color: #31332A;
+}
+
+/* Cuadro secundario (fondo negro con imagen) */
+.cuadro-secundario {
+  position: absolute;
+  max-width:800px;
+  height: 500px;
+  background: #31332A;
+  background-size: cover;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items:end;
+  justify-content:start;
+  padding: 2em;
+}
+
+/* Imagen de fondo */
+.imagen-fondo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.cuadro-secundario h2 {
+  font-family: "Astralaga", sans-serif;
+  font-size: 2em;
+  padding: 0;
+  text-align: center; /* Centra el texto */
+  max-width: 100%;
+  line-height: 1.4; /* Ajusta el espacio entre líneas */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra las palabras dentro del contenedor */
+  margin-top: 4em;
+  margin-bottom: 1em;
+  max-width: 40%; /* Limita el ancho del texto dentro del cuadro */
+  text-align: center;
+}
+
+
+
+/* Frase inspiradora */
+.frase {
+  font-family: "Avenir";
+  font-size: .9em;
+  color: #ccc;
+  margin-left: auto;  /* Mueve la frase a la derecha */
+  text-align: center;  /* Alinea el texto a la derecha */
+  max-width: 39%; /* Limita el ancho del texto dentro del cuadro */
+
+}
+
+/* Nombre de la familia y mensaje */
+.nombre-familia, .mensaje-personalizado {
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-top: 1em;
+}
+
+
+
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .confirmacion-section {
+    height: 70vh; /* Eliminar altura fija */
+    padding: 20px 0; /* Agregar espacio vertical */
+    position: relative; /* Permite posicionar elementos relativos */
+    display: flex;
+    flex-direction: row; /* Colocar los cuadros uno al lado del otro */
+    align-items: center;
+  }
+
+  .cuadro-secundario {
+    position: static; /* Eliminar posicionamiento absoluto */
+    width: 40%; /* Ocupa el 40% del ancho */
+    height: 400px; /* Altura dinámica */
+    z-index: 1; /* Asegura que esté detrás del cuadro principal */
+    border-radius: 0; /* Elimina bordes redondeados */
+    padding: 1em; /* Reduce padding */
+    opacity: 0.8; /* Reduce la opacidad para que sea un fondo */
+    order: 1; /* Colocar a la izquierda */
+    border-radius:3px;
+  }
+
+  .container {
+    position: static; /* Eliminar posicionamiento relativo */
+    width: 60%; /* Ocupa el 60% del ancho */
+    max-width: 100%;
+    z-index: 2; /* Asegura que esté encima del cuadro secundario */
+    order: 2; /* Colocar a la derecha */
+  }
+
+  .codigo-box {
+    position: static; /* Eliminar posicionamiento absoluto */
+    width:50%; /* Ocupar todo el ancho del contenedor */
+    height: 450px; /* Altura dinámica */
+    left: 0; /* Resetear posición */
+    margin-bottom: 20px; /* Espacio entre los cuadros */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius:15px;
+    background: rgba(252, 252, 252, 0.9); /* Fondo semi-transparente */
+  }
+
+  .codigo-box h2 {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 3em;
+    margin-top: 10em;
+  }
+
+  .cuadro-secundario h2 {
+    font-family: "Astralaga", sans-serif;
+    font-size: 1.3em;
+    max-width: 100%;
+    margin-top: 5em;
+    margin-bottom: 5em;
+  }
+  .frase {
+    font-family: "Avenir";
+    font-size: .9em;
+    color: #ccc;
+    margin-left: auto;  /* Mueve la frase a la derecha */
+    text-align: center;  /* Alinea el texto a la derecha */
+    max-width: 100%; /* Limita el ancho del texto dentro del cuadro */
+  
+  }
+
+}
+
+@media (max-width: 480px) {
+  .codigo-box {
+    padding: 1em; /* Reducir padding aún más */
+  }
+
+  .cuadro-secundario {
+    padding: 1em; /* Reducir padding */
+  }
+
+  .cuadro-secundario h2,
+  .cuadro-secundario .frase {
+    font-size: 0.9rem; /* Reducir tamaño de fuente */
+  }
+}
+
+
+/* ================================
+   Estilos para el Modal de Confirmación
+   ================================ */
+
+/* Overlay del modal - cubre toda la pantalla */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Cuando el modal está activo */
+.modal-overlay.active {
+  display: flex;
+}
+
+/* Contenedor del modal */
+.modal-container {
+  position: relative;
+  width: 900px;
+  max-width: 95%;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-out;
+  display: flex;
+  justify-content: center;
+  height: 600px;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cuadro secundario (fondo oscuro) - Imita tu cuadro-secundario */
+.modal-box.secondary {
+  position: absolute;
+  width: 800px;
+  height: 600px;
+  background: #31332A;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: start;
+  padding: 2em;
+}
+
+.modal-title {
+  font-family: "Astralaga", sans-serif;
+  font-size: 2em;
+  padding: 0;
+  text-align: center; /* Centra el texto */
+  line-height: 1.4; /* Ajusta el espacio entre líneas */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra las palabras dentro del contenedor */
+  margin-top: 4em;
+  margin-bottom: 1em;
+  max-width: 40%; /* Limita el ancho del texto dentro del cuadro */
+  text-align: center;
+}
+
+
+.modal-box.secondary h3 {
+  font-family: "Avenir", sans-serif;
+  font-size: 2em;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  max-width: 40%;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0em;
+  margin-bottom: 0em;
+}
+
+.modal-message {
+  font-family: "Avenir";
+  font-size: .9em;
+  color: #ccc;
+  margin-top: 1em;
+  margin-left: auto;  /* Mueve la frase a la derecha */
+  text-align: center;  /* Alinea el texto a la derecha */
+  max-width: 39%; /* Limita el ancho del texto dentro del cuadro */
+}
+
+/* Cuadro principal (cuadro blanco) - Imita tu codigo-box */
+.modal-box.primary {
+  position: relative;
+  width: 420px;
+  background: white;
+  padding: 2em;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  z-index: 10;
+  left: -160px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-box.primary h2 {
+  font-family: "Astralaga", sans-serif;
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 0em;
+  margin-top: 2em;
+}
+/* Estilos para el título dentro del cuadro principal */
+.modal-box.primary h3 {
+  font-family: "Avenir"sans-serif;
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 2em;
+}
+
+/* Estilos para inputs dentro del modal */
+.modal-box.primary input {
+  width: 100%;
+  padding: 0.8em;
+  border: none;
+  border-bottom: 2px solid black;
+  font-size: 1em;
+  outline: none;
+  background: transparent;
+  text-align: center;
+  color: #333;
+  margin: 1em 0;
+}
+
+.modal-box.primary input[type="number"] {
+  width: 80px;
+  margin: 0.5em auto;
+  display: block;
+}
+
+/* Estilos para párrafos */
+.modal-box.primary p {
+  margin: 1em 0;
+  color: #333;
+}
+
+/* Estilos para botones - Imita tu btn-verificar */
+.modal-box.primary button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 1em;
+  border: 2px solid #31332A;
+  border-radius: 10px;
+  background: #31332A;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.modal-box.primary button:hover {
+  background: white;
+  color: #31332A;
+}
+
+/* Segundo botón (cerrar) con estilo alternativo */
+.modal-box.primary button#cerrarModal {
+  background: transparent;
+  color: #31332A;
+  border: 1px solid #31332A;
+  margin-top: 10px;
+}
+
+.modal-box.primary button#cerrarModal:hover {
+  background: #f5f5f5;
+}
+
+/* Mensaje de confirmación */
+.mensaje-confirmacion {
+  margin-top: 15px;
+  font-weight: bold;
+  min-height: 40px;
+}
+/* Diseño responsivo para pantallas pequeñas */
+@media (max-width: 768px) {
+  .modal-container {
+    height: 80vh; /* Eliminar altura fija */
+    padding: 20px 0; /* Agregar espacio vertical */
+    position: relative; /* Permite posicionar elementos relativos */
+    display: flex;
+    flex-direction: row; /* Colocar los cuadros uno al lado del otro */
+    align-items: center;
+  }
+
+  .modal-box.secondary {
+    position: static; /* Eliminar posicionamiento absoluto */
+    width: 40%; /* Ocupa el 40% del ancho */
+    height: 400px; /* Altura dinámica */
+    z-index: 1; /* Asegura que esté detrás del cuadro principal */
+    border-radius: 10px; /* Bordes ligeramente redondeados */
+    padding: 0em; /* Reduce padding */
+    opacity: 1; /* Reduce la opacidad para que sea un fondo */
+    order: 1; /* Colocar a la izquierda */
+  }
+
+  .modal-title {
+    font-size: 1.5em;
+    max-width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+  .modal-box.secondary h3 {
+    font-size: 1.2em;
+    padding: .5em;
+    text-align: center;
+    max-width: 100%;
+    margin-top: 0em;
+    margin-bottom: 2em;
+  }
+  
+
+ .modal-message {
+    font-size: .9em;
+    color: #ccc;
+    margin-left: auto;  /* Mueve la frase a la derecha */
+    text-align: center;  /* Alinea el texto a la derecha */
+    max-width: 100%; /* Limita el ancho del texto dentro del cuadro */
+  }
+
+  .modal-box.primary {
+    position: static; /* Eliminar posicionamiento absoluto */
+    width: 50%; /* Ocupar ancho apropiado */
+    height: 450px; /* Altura dinámica */
+    left: 0; /* Resetear posición */
+    margin-bottom: 20px; /* Espacio entre los cuadros */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    order: 2; /* Colocar a la derecha */
+    z-index: 2; /* Asegura que esté encima del cuadro secundario */
+  }
+
+  .modal-box.primary h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding: .5em;
+  }
+}
+
+@media (max-width: 670px) {
+  .modal-box.primary h2 {
+    font-size: 2.0em;
+  }
+  .modal-box.primary h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding: .5em;
+  }
+   .modal-title {
+    font-size: 1.2em;
+    max-width: 100%;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+}
+@media (max-width: 480px) {
+  .modal-box.primary {
+    padding: 1em; /* Reducir padding aún más */
+    width: 60%; /* Ajustar ancho para pantallas muy pequeñas */
+  }
+
+  .modal-box.secondary {
+    padding: 1em; /* Reducir padding */
+    width: 40%; /* Ajustar ancho para pantallas muy pequeñas */
+  }
+
+  .modal-title {
+    font-size: .9em;
+    margin-top: 4rem;
+  }
+  
+  
+  .modal-box.secondary h3 {
+    font-size: .9em;
+  }
+  
+  .modal-message {
+    font-size: .8em;
+  }
+  
+  .modal-box.primary button {
+    padding: 0.8em; /* Reducir padding de botones */
+    font-size: 0.9em; /* Reducir tamaño de texto en botones */
+  }
+}
+
+/* ---------------------- */
+/* footer */
+/* ---------------------- */
+.footer {
+  background: #31332A; /* Color oscuro similar al resto del diseño */
+  color: #ffffff;
+  padding: 10px 20px;
+  text-align: center;
+  font-family: 'Avenir', sans-serif;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.footer-logo-image{
+  width: 200px;
+  height: auto;
+}
+
+
+/* Enlaces de redes sociales */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-icon {
+  width: 30px;
+  height: 30px;
+  filter: brightness(0) invert(1); /* Iconos en blanco */
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+/* Derechos reservados */
+.footer-copyright {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* 📌 Responsividad */
+@media (max-width: 768px) {
+  .footer-signature {
+    font-size: 1.5rem;
+  }
+
+  .social-icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+
+  .footer-logo-image{
+    width: 400px;
+    height: auto;
+  
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-signature {
+    font-size: 1.3rem;
+  }
+
+  .footer-logo-image{
+    width: 200px;
+    height: auto;
+  
+  }
+
+  .social-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-copyright {
+    font-size: 0.7rem;
+  }
+}
+
+/* Añade estas reglas al final de tu CSS actual */
+@media (hover: none) and (pointer: coarse) {
+  .horizontal-scroll-wrapper {
+    -webkit-overflow-scrolling: touch;
+    transform: rotate(-90deg) translate3d(0,-100vh,0);
+  }}
+  
+  .external {
+    overflow: hidden;
+    height: 100vh;
+  }
