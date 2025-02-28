@@ -813,7 +813,7 @@ body {
   display: flex;
 }
 
-.modal-content {
+.modal-content-calendar {
   background: #1E2915;
   padding: 2rem;
   border-radius: 15px;
@@ -856,13 +856,14 @@ body {
 }
 
 
-.modal-content p {
+.modal-content-calendar p {
   font-family: 'Avenir', sans-serif;
   font-size: 1.2rem;
   color: #ffffff;
   margin-bottom: 2rem;
   margin-top: 0;
   margin-left: 0;
+  text-align: center;
 }
 
 
@@ -910,19 +911,22 @@ body {
     margin: 0 auto;
     padding: 0 1rem;
     text-align: center;
+    
   }
 
   .arrow-container {
     display: none; /* Ocultar la flecha en tablets */
   }
 
-  .modal-content p {
+  .modal-content-calendar p {
     font-family: 'Avenir', sans-serif;
     font-size: 1.2rem;
     color: #ffffff;
     margin-bottom: 2rem;
     margin-top: 0;
     margin-left: 0;
+    text-align: center;
+    
   }
 }
 
@@ -972,19 +976,23 @@ body {
 
   .text-container p {
     font-size: 1.5rem;
+    
   }
 
-  .modal-content {
+  .modal-content-calendar {
     width: 50%;
     padding: 1.5rem;
+    
   }
-  .modal-content p {
+  .modal-content-calendar p {
     font-family: 'Avenir', sans-serif;
     font-size: 1.2rem;
     color: #ffffff;
     margin-bottom: 2rem;
     margin-top: 0;
     margin-left: 0;
+    text-align: center;
+    
   }
 
   .calendar-button {
@@ -1036,14 +1044,15 @@ body {
     bottom: -1.2rem;
   }
 
-  .modal-content {
+  .modal-content-calendar {
     width: 90%;
     padding: 1.2rem;
   }
 
-  .modal-content p {
+  .modal-content-calendar p {
     font-size: 1rem;
     margin-bottom: 1.5rem;
+    text-align: center;
   }
 
   .calendar-button {
