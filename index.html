@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Scroll</title>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- PANTALLA DE CARGA -->
+<div id="loading-screen">
+  <div id="container">
+      <div id="animation-wrapper">
+          <svg id="trail" xmlns="http://www.w3.org/2000/svg"></svg>
+          <div id="logo-container">
+              <img id="logo" src="imagenes/EraseUnaVez.svg" alt="Tu Logo">
+          </div>
+          <svg id="libelula" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2732 1744.9">
+            <defs>
+              <style>
+                .st0 {
+                  fill: #cbd6e9;
+                }
+
+                .st1 {
+                  fill: #8fa9dd;
+                }
+
+                .st2 {
+                  opacity: .6;
+                }
+
+                .st3 {
+                  fill: #f2e0ab;
+                }
+              </style>
+            </defs>
+            <g class="st2">
+              <g>
+                <path class="st0" d="M1623.9,350c5,8.5,2.2,19.4-6.3,24.4-8.5,5-19.4,2.2-24.5-6.3-5-8.5-2.2-19.4,6.3-24.4,8.5-5,19.4-2.2,24.4,6.3"/>
+                <path class="st3" d="M681.4,917.3s203.9-231.6,499.4-280.4l-3.2-19.6s-146.2,4-284.2,88.7c-138,84.7-201.8,164-201.8,164,0,0-22.5,37.3-10.2,47.3"/>
+                <path class="st1" d="M1691.8,321.7s-301.4,66.2-487.1,301.1l-15.6-12.3s74.3-126,215.2-205.7c140.9-79.7,241.2-97.2,241.2-97.2,0,0,43.6-1.7,46.3,14"/>
+                <path class="st1" d="M1012.6,1134.7s-23.7-226.7,183.7-503.2l-37.7,18.5s-118.7,129.1-160.7,269.1c-42,140-19.1,236,14.8,215.6"/>
+                <path class="st3" d="M1729.3,712.2s-186.9-130.6-529.2-83l34.5-24s170.4-41.3,313.2-10.3c142.8,31,215.7,97.6,181.5,117.3"/>
+                <path class="st3" d="M847.9,787.8c8,13.5,3.5,31-10.1,39-13.5,8-31,3.5-39-10.1-8-13.5-3.5-31,10.1-39,13.5-8,31-3.5,39,10.1"/>
+                <path class="st1" d="M1065.1,933c8,13.5,3.5,31-10.1,39-13.5,8-31,3.5-39-10.1-8-13.6-3.5-31,10.1-39,13.5-8,31-3.5,39,10.1"/>
+                <path class="st1" d="M1102.2,1001.5c4.7,8.1,2.1,18.4-6,23.2-8,4.8-18.4,2.1-23.2-6-4.7-8.1-2.1-18.4,6-23.2,8.1-4.8,18.4-2.1,23.2,6"/>
+                <path class="st1" d="M1164.8,826c9.3,15.8,4,36.1-11.7,45.4-15.8,9.3-36.1,4-45.4-11.7-9.3-15.8-4-36.1,11.7-45.4,15.8-9.3,36.1-4.1,45.4,11.7"/>
+                <path class="st3" d="M1650.3,648.9c6.9,11.8,3,26.9-8.7,33.8-11.8,6.9-26.9,3-33.8-8.7-6.9-11.8-3-26.9,8.7-33.8,11.8-6.9,26.9-3,33.8,8.7"/>
+                <path class="st3" d="M1524,685.1c5.5,9.3,2.4,21.2-6.9,26.7-9.3,5.5-21.2,2.4-26.7-6.9-5.5-9.3-2.4-21.2,6.9-26.7,9.3-5.5,21.2-2.4,26.7,6.9"/>
+                <path class="st3" d="M1336,674c4.7,8,2,18.3-6,23-8,4.7-18.3,2.1-23-5.9-4.7-8-2-18.3,6-23,8-4.7,18.3-2,23,5.9"/>
+                <path class="st1" d="M1380.1,493.7c9.5,16.1,4.1,36.8-12,46.3-16.1,9.5-36.8,4.1-46.3-12-9.5-16.1-4.1-36.8,11.9-46.3,16.1-9.5,36.8-4.1,46.3,12"/>
+                <path class="st1" d="M1506.4,445c5,8.5,2.2,19.4-6.3,24.4-8.5,5-19.4,2.2-24.5-6.3-5-8.5-2.2-19.4,6.3-24.4,8.5-5,19.4-2.2,24.4,6.3"/>
+                <path class="st3" d="M957.9,779.7c3.9,6.6,1.7,15.2-4.9,19.1-6.7,3.9-15.2,1.7-19.1-4.9-3.9-6.7-1.7-15.2,4.9-19.1,6.7-3.9,15.2-1.7,19.1,4.9"/>
+              </g>
+            </g>
+            <path d="M1707.2,331.6c.3,29.5-27.9,68.1-47.2,91.1-87.2,103.8-316.1,269.5-475.6,201.6-2.3-1-4.1-2.9-4.9-5.3-.8-2.4-.5-5,.8-7.1,1.3-2.2,133.7-223,423.3-306.1,52.5-15.1,85.6-12.7,98.3,6.9,3.6,5.6,5.2,11.9,5.3,18.8M1200.9,612.1c138,48.5,349.3-85.7,445.8-200.5,41-48.9,47.6-78.6,40.7-89.2-3.7-5.7-18.7-17-78.9.3-250.4,71.9-380.1,248.3-407.5,289.5Z"/>
+            <path d="M1744.7,705.8c0,3.1-.3,5.9-.8,8.6-7.3,37.7-63.8,68.6-147.5,80.8-150.5,21.9-337.3-23.1-415.3-173-1.2-2.3-1.3-5-.3-7.4,1-2.4,3-4.2,5.5-5,2.9-.9,296.5-90,507.4,32.5,40.4,23.5,50.8,46.3,51,63.4M1201.7,623.6c76.9,134.7,251,174.9,392.2,154.4,73.8-10.7,127.2-37.6,132.9-66.9,4.2-21.8-20.4-41.2-41.8-53.6-182.3-105.9-430.1-48.2-483.2-33.9Z"/>
+            <path d="M1195.8,616.7c0,.3,0,.7,0,1-17.9,172.4-273.7,292.5-406.7,318.5-36.4,7.1-100,14.4-116.5-16.5-11-20.7,2.9-50.8,41.5-89.4,212.9-213.1,470.2-222.1,472.8-222.1,2.5,0,4.9,1,6.6,2.8,1.5,1.6,2.3,3.7,2.3,5.8M686.4,904.6c0,3.2.8,5.4,1.6,6.9,5.9,11.2,35.1,19.9,97.8,7.6,147.3-28.8,366.9-148.7,391.3-292.9-49.4,4.1-266.7,32.3-450.6,216.4-33.4,33.5-40.1,52.3-40,62.1Z"/>
+            <path d="M1245,781c.9,100.6-40.9,203.1-99.3,279.9-51.2,67.3-105.6,101.8-142.1,89.9-17-5.5-37.5-23.7-38.7-78.8,0-1.6,0-3.2,0-4.7-2.2-242,215.1-452.9,217.3-455,1.9-1.8,4.4-2.7,7-2.4,2.6.3,4.9,1.7,6.3,3.8,34.2,51.6,49,109.1,49.6,167.3M982.3,1067.1c0,1.5,0,3,0,4.5.5,24.8,5.6,55.7,26.7,62.6,28.4,9.2,77.7-24.5,122.9-83.9,86.3-113.6,135.5-285.4,54.8-417.9-37.9,39.3-206.3,225.6-204.4,434.6Z"/>
+            <path d="M1958.9,1222.9c0,.9-.1,1.8-.4,2.7-1.4,4.6-6.3,7.1-10.9,5.7-322.3-100.5-594.3-316.2-765.9-607.3-2.4-4.1-1.1-9.5,3.1-11.9,4.1-2.4,9.5-1.1,11.9,3.1,169.4,287.3,437.9,500.3,756,599.5,3.7,1.2,6.1,4.6,6.1,8.2"/>
+            <path d="M1193.6,554c0,3.7-.4,7.5-1.4,11.2-2.9,11.2-9.9,20.5-19.9,26.4-9.9,5.9-21.5,7.5-32.7,4.6-11.2-2.9-20.5-9.9-26.4-19.9-12.1-20.5-5.2-47,15.2-59.1,20.5-12.1,47-5.2,59.1,15.2,3.9,6.6,5.9,14,6,21.5M1124.7,554.8c0,4.4,1.2,8.8,3.6,12.8,3.5,5.9,9.1,10.1,15.7,11.8,6.6,1.7,13.6.7,19.5-2.7,5.9-3.5,10.1-9.1,11.8-15.7,1.7-6.7.7-13.6-2.8-19.5-7.2-12.2-23-16.3-35.2-9.1-8.2,4.8-12.7,13.6-12.7,22.4Z"/>
+          </svg>
+      </div>
+  </div>
+</div>
+
+<!-- CARTA -->
+<div class="sobre-container" id="sobreContainer" style="display: none;">
+  <div class="sobre" id="sobre">
+      <div class="capa capa-bottom"></div>
+      <div class="capa capa-medio"></div>
+      <div class="capa capa-top"></div>
+      <div class="sello" id="sello" onclick="abrirSobre()"></div>
+  </div>
+</div>
+
+<!-- CONTENIDO PRINCIPAL -->
+<div class="contenido-principal" id="contenidoPrincipal" style="display: none;">   
+
+     <!-- Barra de Navegación  -->
+     <nav class="navbar">
+      <button class="menu-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+      </button>
+      <div class="logo">MARIANA Y ALONSO</div>
+      <ul class="nav-list">
+          <li><a href="#fecha">Fecha</a></li> 
+          <li><a href="#cronograma">Cronograma</a></li>
+          <li><a href="#vestimenta">Vestimenta</a></li>
+          <li><a href="#lugar">Lugar</a></li>
+          <li><a href="#hospedaje">Hospedaje</a></li>
+          <li><a href="#confirmacion">Confirmación</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Parallax  -->
+      <section class="parallax">
+        <div class="layer layer1" data-speed="0.05"></div>
+        <img src="imagenes/Mariana y Alonso.svg" class="layer layer2" data-speed="0.15">
+        <div class="content">
+            <h1>07  .  06  .  2025</h1>
+        </div>
+    </section>
+
+
+
+    <!-- Calendario  -->
+    <section id="fecha" class="date-section">
+        <div class="text-container">
+            <p> "Con mucha alegría, queremos compartir nuestro amor con ustedes e invitarlos a celebrar el día más especial de nuestras vidas."
+            </p>    
+        </div>
+    <div class="calendar-container">
+        <div class="calendar-header">
+          <h2>Junio 2025</h2>
+          <div class="save-calendar-text">Click para guardar la fecha</div>
+        </div>
+        <div class="calendar">
+          <div class="weekdays">
+            <div>Dom</div>
+            <div>Lun</div>
+            <div>Mar</div>
+            <div>Mié</div>
+            <div>Jue</div>
+            <div>Vie</div>
+            <div>Sáb</div>
+          </div>
+          <div class="days">
+            <!-- Se genera con JavaScript -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal para seleccionar el tipo de calendario -->
+<div class="calendar-modal">
+    <div class="modal-content">
+      <h3>Guardar Fecha</h3>
+      <p>Selecciona dónde quieres guardar la fecha del evento</p>
+      <button class="calendar-button google-calendar">Google Calendar</button>
+      <button class="calendar-button apple-calendar">Apple Calendar</button>
+      <button class="calendar-button close-modal">Cerrar</button>
+    </div>
+  </div>
+
+      <div class="arrow-container">
+        <svg width="150" height="100" viewBox="0 0 150 100">
+            <path class="curved-arrow"
+                  d="M10,50 Q75,20 140,50"
+                  fill="none"
+                  stroke="#384C25"
+                  stroke-width="2"
+                  stroke-dasharray="5,5"
+                  marker-end="url(#arrowhead)"/>
+            
+            <!-- Definimos la punta de la flecha -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#384C25"/>
+                </marker>
+            </defs>
+        </svg>
+    </div>
+    
+      <div class="date-text-container">
+      <p>Reserva esta fecha para 
+        celebrar con 
+        nosotros
+      </p>
+      </div>
+  </section>
+
+  <!-- Efecto Papel Rasgado -->
+<div class="paper-effect-cronov1">
+  <img src="imagenes/papelV1.webp" alt="Efecto papel rasgado crono">
+  </div>
+  
+<!-- Nueva Sección: Línea de Tiempo -->
+<section class="timeline-section" id="cronograma">
+  <h2 class="timeline-title">NUESTRO GRAN DÍA</h2>
+  <p class="timeline-subtitle">Así es como va a suceder todo</p>
+  <div class="timeline">
+    <div class="timeline-event left boleto-1">
+      <div class="icon-left">
+        <img src="imagenes/boleto1.webp" alt="Ceremonia - WE DO 5:30 PM" title="Ceremonia">
+      </div>
+    </div>
+    <div class="timeline-event right boleto-2">
+      <div class="icon-right">
+        <img src="imagenes/boleto2.webp" alt="Cocktail - WE DRINK 7:30 PM" title="Cocktail">
+      </div>
+    </div>
+    <div class="timeline-event left boleto-3">
+      <div class="icon-left">
+        <img src="imagenes/boleto3.webp" alt="Cena - WE EAT 8:00 PM" title="Cena">
+      </div>
+    </div>
+    <div class="timeline-event right boleto-4">
+      <div class="icon-right">
+        <img src="imagenes/boleto4.webp" alt="Fiesta - WE PARTY 9:00 PM" title="Fiesta">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Efecto Papel Rasgado -->
+  <div class="paper-effect-cronov2">
+    <img src="imagenes/papelV2.webp" alt="Efecto papel rasgado crono">
+    </div>
+
+
+  <!-- Cuenta Regresiva  -->
+  <section class="countdown-section">
+    <div class="countdown-background"></div>
+    <div class="countdown-container">
+        <div class="countdown">
+              <div class="countdown-item">
+                  <span id="days">00</span>
+                  <span class="label">Días</span>
+              </div>
+              <div class="countdown-item">
+                  <span id="hours">00</span>
+                  <span class="label">Horas</span>
+              </div>
+              <div class="countdown-item">
+                  <span id="minutes">00</span>
+                  <span class="label">Minutos</span>
+              </div>
+              <div class="countdown-item">
+                  <span id="seconds">00</span>
+                  <span class="label">Segundos</span>
+              </div>
+          </div>
+          <h2>FALTA POCO PARA DECIR "SI, ACEPTO"</h2>
+      </div>
+  </section>
+
+  <!-- Código de Vestimenta -->
+<section class="dress-code-section" aria-label="Recomendaciones de vestimenta" id="vestimenta">
+    <h2>Código de Vestimenta</h2>
+    
+  
+    <div class="dress-code-container">
+      <!-- Sección Mujeres -->
+      <div class="dress-code-item women" onclick="window.open('https://mx.pinterest.com/marianaduc96/lookbook/', '_blank')">
+        <img src="icono/women.png" alt="Vestimenta recomendada para mujeres">
+      </div>
+  
+      <!-- Sección Hombres -->
+      <div class="dress-code-item men" onclick="window.open('https://mx.pinterest.com/marianaduc96/look-book/', '_blank')">
+        <img src="icono/men.png" alt="Vestimenta recomendada para hombres">
+      </div>
+    </div>
+  
+    <!-- Texto centrado -->
+    <div class="text-center-box">
+      <h3>Vestimenta Formal</h3>
+      <h4>Juntos, crearemos el ambiente perfecto y haremos que cada momento sea aún más especial. ¡Nos encantará verte brillar con tu mejor estilo!</h4>
+      <h5>Para hacer de este día algo inolvidable, te pedimos seguir el código. Ve ejemplos al darle Clic en los iconos. </h5>
+      <p class="no-kids"> Por cuestiones de seguridad y logística de nuestra boda, no se aceptará el ingreso a niños. ¡Aprovechen para disfrutar, bailar y brindar sin interrupciones! </p>
+  </div>
+  
+  </section>
+
+<!-- Efecto Papel Rasgado -->
+<div class="paper-effect-vest">
+    <img src="imagenes/papelV2.webp" alt="Efecto papel rasgado vestimenta">
+    </div>
+
+ <!-- Locación -->
+    <section class="location-section" id="lugar">
+      <div class="location-title">
+        <h2>LOCACIÓN</h2>
+      </div>
+    
+      <div class="location-container">
+        <!-- Ceremonia - Alineada a la izquierda -->
+        <div class="location ceremonia">
+          <img src="icono/ceremonia2.png" alt="Icono Iglesia" class="location-icon">
+          <div class="location-info">
+            <h4>CEREMONIA</h4>
+            <p class="venue-name">Templo Inmaculado Corazón de María</p>
+            <p class="venue-address">C. 20 de Enero 208, Centro 37000</p>
+            <p class="venue-city">León de los Aldama, Gto.</p>
+            <a href="https://maps.app.goo.gl/etQsAX1QsyQkpQ1XA" target="_blank" class="location-button">UBICACIÓN</a>
+          </div>
+        </div>
+    
+        <!-- Recepción - Alineada a la derecha -->
+        <div class="location recepcion">
+          <div class="location-info2">
+            <h4>RECEPCIÓN</h4>
+            <p class="venue-name">Hacienda Los Rincones</p>
+            <p class="venue-address">Carretera Santa Ana del Conde</p>
+            <p class="venue-city">León de los Aldama, Gto.</p>
+            <a href="https://maps.app.goo.gl/3NezfgnEPfmJQ6Lf7" target="_blank" class="location-button">UBICACIÓN</a>
+          </div>
+          <img src="icono/cocktail2.png" alt="Icono Recepción" class="location-icon">
+        </div>
+      </div>
+  </section>
+  
+  <!-- Efecto Papel Rasgado -->
+  <div class="paper-effect-fotos">
+    <img src="imagenes/papelV1.webp" alt="Efecto papel rasgado fotos">
+    </div>
+
+    <!-- Galería de Fotos -->
+  <section class="photo-gallery" aria-label="Galería de fotos">
+    <h2>Momentos Especiales</h2>
+    <div class="gallery">
+      <div class="photo-row">
+        <div class="photo-container large">
+          <img src="imagenes/Edit4.1.webp" alt="Foto horizontal 1">
+        </div>
+      </div>
+      <div class="photo-row">
+        <div class="photo-container small">
+          <img src="imagenes/Edit7.1.webp" alt="Foto vertical 2">
+        </div>
+        <div class="photo-container small">
+          <img src="imagenes/Edit6.1.webp" alt="Foto vertical 3">
+        </div>
+      </div>
+      <div class="photo-row">
+        <div class="photo-container large">
+          <img src="imagenes/Edit5.1.webp" alt="Foto horizontal 1">
+        </div>
+      </div>
+     </div>
+  </section>
+
+  <!-- Efecto Papel Rasgado -->
+<div class="paper-effect-fotos2">
+  <img src="imagenes/papelV2.webp" alt="Efecto papel rasgado vestimenta">
+  </div>
+
+  
+
+ <!-- Hospedaje -->
+<section class="accommodation-section" id="hospedaje">
+  <h2>HOSPEDAJE</h2>
+  <p class="accommodation-info">
+    Aquí te compartimos algunas recomendaciones cercanas al lugar del evento.
+    <br>
+    Recuerda mencionar que la boda es en <em>"Hacienda Los Rincones"</em>
+  </p>
+
+
+    <div class="hotels-grid">
+      <!-- Hotel 1 -->
+      <div class="hotel-card">
+        <img src="icono/H1.png" alt="Holiday Inn Icon" class="hotel-icon">
+        <h3>Holiday Inn Express & Suites</h3>
+        <p>Carretera 45, Silao - León KM 156,</p>
+        <p>Col. Nuevo México, 36270 Silao, Gto.</p>
+        <p>Teléfono: 472 117 92 00 Ext.9210</p>
+        <p>WhatsApp: 472 132 68 90</p>
+        <a href="https://www.ihg.com/holidayinnexpress/hotels/us/es/leon/bjxrr/hoteldetail" class="info-button">MÁS INFO</a>
+      </div>
+    
+      <!-- Hotel 2 -->
+      <div class="hotel-card">
+        <img src="icono/H2.png" alt="Hotel One Icon" class="hotel-icon">
+        <h3>Hotel One Silao</h3>
+        <p>Carretera León- Silao KM 153+500</p>
+        <p>Col. Rancho San Antonio Texas, 36270</p>
+        <p>Teléfono: 4721039250, ext. 30008</p>
+        <p>WhatsApp: 477 227 04 62</p>
+        <a href="https://www.fiestamericanatravelty.com/one-hoteles/hoteles/one-silao" class="info-button">MÁS INFO</a>
+      </div>
+    
+      <!-- Hotel 3 -->
+      <div class="hotel-card">
+        <img src="icono/H3.png" alt="GlowPoint Icon" class="hotel-icon">
+        <h3>Hotel GlowPoint</h3>
+        <p>Blvd. Aeropuerto 843 4to. Piso</p>
+        <p>Col. Santa Anita, León, Guanajuato.</p>
+        <p>Teléfono: 477 600 10 90</p>
+        <a href="https://www.hotelglowpoint.com.mx/" class="info-button">MÁS INFO</a>
+      </div>
+    
+      <!-- Hotel 4 -->
+      <div class="hotel-card">
+        <img src="icono/H4.png" alt="HS Hotsson Icon" class="hotel-icon">
+        <h3>HS Hotsson Smart Hotels & Resorts</h3>
+        <p>Blvd. Adolfo López Mateos 2303</p>
+        <p>Col. Jardines de Jerez 37530 León, Gto.</p>
+        <p>Teléfono: 477 267 3000 Ext.2014</p>
+        <a href="https://www.hotsson.com/hoteles/leon-centromax" class="info-button">MÁS INFO</a>
+      </div>
+    
+      <!-- Hotel 5 (centrado en la última fila) -->
+      <div class="hotel-card last-hotel">
+        <img src="icono/H2.png" alt="InHouse Icon" class="hotel-icon">
+        <h3>Hotel InHouse</h3>
+        <p>Blvd. Aeropuerto 1452</p>
+        <p>Autopista Poniente 37547, León, Gto</p>
+        <p>WhatsApp: 477 797 30 50</p>
+        <p>Importante: Mencionar la boda de "Mariana Ducoing"</p>
+        <a href="https://www.inhousehotels.com/inhouse-leon" class="info-button">MÁS INFO</a>
+      </div>
+    </div>
+
+  <!-- Botón para mostrar más opciones -->
+  <button id="toggleHoteles">Más opciones</button>
+</section>
+
+
+<!-- Efecto Papel Rasgado -->
+<div class="paper-effect-mesa1">
+  <img src="imagenes/papelV1.webp" alt="Efecto papel rasgado fotos">
+  </div>
+
+<!-- Mesa de Regalos -->
+<section class="gifts-section" aria-label="Mesa de regalos">
+  <h2>MESA DE REGALOS</h2>
+  <p>Tu presencia es el regalo más especial para nosotros. Sin embargo, si deseas hacernos un obsequio, te dejamos una pequeña sugerencia para que puedas elegir lo que más nos hará felices.</p>
+  
+  <div class="gift-links">
+    <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/51609997" target="_blank" class="gift-link">
+      <img src="icono/LIVERPOOL.webp" alt="Mesa de Regalos Liverpool">
+    </a>
+    <a href="#" class="gift-link" id="bbva-link">
+      <img src="icono/dinero-01.svg" alt="Depósito BBVA">
+    </a>
+  </div>
+
+  <div id="bbva-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-bbva">&times;</span>
+      <h3>Depósito a Cuenta BBVA</h3>
+      <div class="modal-info">
+        <p><strong>Banco:</strong> BBVA</p>
+        <p><strong>Nombre:</strong> Silvia Mariana Ducoing López</p>
+        <div class="copy-container">
+          <p><strong>Número de cuenta:</strong> <span id="account-number">4555 1030 0219 8227</span></p>
+          <button id="copy-button">Copiar</button>
+          <span id="copy-message">¡Copiado!</span>
+        </div>
+        <p>Puedes hacer tu depósito a través de la app BBVA o en ventanilla.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Efecto Papel Rasgado -->
+  <div class="paper-effect-mesa2">
+    <img src="imagenes/papelV2.webp" alt="Efecto papel rasgado vestimenta">
+    </div>
+
+
+<!-- Confirmación de Asistencia --> 
+<section id="confirmacion" class="confirmacion-section">
+  <div class="confirmation-container">
+  <!-- Cuadro secundario con imagen -->
+  <div class="cuadro-secundario">
+      <h2 style="color: white;">CONFIRMACIÓN DE ASISTENCIA</h2>
+      <p class="frase">"Nos encantaría compartir este momento especial contigo. ¡Tu presencia hará nuestro día aún más especial!"</p>
+      
+</div>
+
+  <!-- Cuadro frontal: Ingreso de Código -->
+  <div class="codigo-box">
+      <h2>AÑADE TU CÓDIGO DE INVITADO</h2>
+      <input type="text" id="codigoInput" placeholder="Introduce tu código" class="input-codigo">
+      <button onclick="verificarCodigo()" class="btn-verificar">VERIFICAR CÓDIGO</button>
+  </div>
+  </div>
+
+  
+
+  <!-- Nueva Sección: Datos del Invitado (Aparece solo si el código es válido) -->
+  <div id="datos-invitado" class="datos-invitado-box" style="display: none;">
+      <h3 id="nombre-familia"></h3>
+      <p>Invitaciones disponibles: <span id="invitaciones-disponibles"></span></p>
+
+      <!-- Campo para confirmar invitados -->
+      <label for="confirmadas">Número de invitados a confirmar:</label>
+      <input type="number" id="confirmadas" min="1" class="input-numero">
+      
+      <button onclick="confirmarInvitaciones()" class="btn-confirmar">CONFIRMAR ASISTENCIA</button>
+      <p id="mensaje-confirmacion" class="mensaje-confirmacion"></p>
+  </div>
+  
+    <!-- Mensaje adicional en la parte inferior -->
+    <div class="mensaje-fecha-confirmacion">
+      <p>Por cuestiones de seguridad y logística de nuestra boda, no se aceptará el ingreso a niños. ¡Aprovechen para disfrutar, bailar y brindar sin interrupciones!</p>
+    </div>
+</section>
+
+
+
+<!-- Efecto Papel Rasgado después de la confirmación -->
+<div class="paper-effect-polaroid">
+  <img src="imagenes/papelV1.webp" alt="Efecto papel rasgado">
+</div>
+
+<!-- Sección Polaroid con GIF -->
+<section class="polaroid-section">
+  <div class="polaroid-background"></div>
+  <div class="polaroid-container">
+    <div class="polaroid-frame">
+      <div class="polaroid-image">
+        <img src="imagenes/mya.gif" alt="Nuestro momento especial">
+      </div>
+      <div class="polaroid-caption">
+        <p>Mariana & Alonso</p>
+        <p class="polaroid-date">07.06.2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Audio de fondo -->
+<audio id="background-music" src="audio/I See The Light.mp3" loop></audio>
+
+<!-- Botón de Mute -->
+<button id="mute-button" class="mute-button">
+  <img id="mute-icon" src="icono/play.svg" alt="Icono de sonido activo">
+</button>
+
+
+<footer class="footer">
+  <div class="footer-content">
+
+      <!-- Enlaces de redes sociales -->
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61572634691409" target="_blank" aria-label="Facebook">
+          <img src="icono/facebook.webp" alt="Facebook Icon" class="social-icon">
+        </a>
+      </div>
+
+    <!-- Firma -->
+    <a href="https://www.facebook.com/profile.php?id=61572634691409" class="footer-logo">
+      <img src="imagenes/Logo.png" alt="Logo de Kari & Eddy" class="footer-logo-image">
+    <!-- Derechos reservados -->
+     
+    <p class="footer-copyright">© 2025 Once Upon a Time. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
